@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.example.hrmapp&apos; to &apos;org.primepro.hrmapp&apos;&#x0D;&#x0A;- Original project: &apos;hrmapp&apos;&#x0D;&#x0A;- Original element: &apos;hrmapp/src/main/java/com.example.hrmapp&apos;&#x0D;&#x0A;- Renamed element: &apos;hrmapp/src/main/java/org.primepro.hrmapp&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.example.hrmapp&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.hrmapp" name="org.primepro.hrmapp" qualified="false" references="true" stamp="1714614824420" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,68 @@
+package org.primepro.hrmapp.repositories;
+
+import java.util.List;
+
+import org.primepro.hrmapp.entities.Emp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
+
+@Repository("empRepository")
+@Transactional // declarative transaction mgt
+public class EmpRepositoryImpl implements EmpRepository {
+	@Autowired
+	private EntityManager em;
+
+	@Override
+	public void insert(Emp e) {
+		em.persist(e);
+
+		// em.detach(e);
+
+		em.flush(); // for performing each operation partially ,we have to write after each method
+
+		// em.remove(e); //remove from persistance context
+
+		// em.persist(e);
+
+		// em.persist(e); // here we can use only merge() method once we have detached
+		// form persistance context.
+		// em.merge(e);
+
+	}
+
+	@Override
+	public void delete(int eno) {
+		Emp e = em.find(Emp.class, eno);
+		em.remove(e);
+
+	}
+
+	@Override
+	public List<Emp> getEmployees() {
+
+		Query query = em.createQuery("SELECT e FROM Emp e");
+
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public Emp getEmployee(int eno) {
+		return em.find(Emp.class, eno);
+
+	}
+
+	@Override
+	public void updateEmployee(int eno, Emp e) {
+		Query query = em.createQuery("UPDATE Emp e SET e.address = :address WHERE e.eno = :eno");
+		query.setParameter("address", e.getAddress()); // Set the address parameter
+		query.setParameter("eno", eno);
+		query.executeUpdate();
+
+	}s
+
+}

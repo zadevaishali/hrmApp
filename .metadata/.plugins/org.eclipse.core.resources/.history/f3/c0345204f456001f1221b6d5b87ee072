@@ -1,0 +1,35 @@
+package org.primepro.hrmapp;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.primepro.hrmapp.entities.Emp;
+import org.primepro.hrmapp.repositories.EmpRepository;
+import org.primepro.hrmapp.repositories.EmpRepositoryImpl;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class HrmappApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext context=SpringApplication.run(HrmappApplication.class, args);
+		EmpRepository repo=context.getBean("empRepository",EmpRepositoryImpl.class);
+		//Emp e=new Emp(2,"Vaishali","Hyderabad",LocalDate.of(2024, 01, 01));
+		Emp e=new Emp();
+		e.setName("Alisha");
+		e.setAddress("Chennai");
+		e.setDateOfJoin(LocalDate.of(2014,06,03));
+		//repo.insert(e);
+		//repo.delete(1);
+		
+		List<Emp> list=repo.getEmployees();
+		for(Emp e:list)
+		{
+			System.out.println(e.getEno()+"\t"+e.getName()+"\t"+e.getDateOfJoin());
+		}
+		
+	}
+
+}
